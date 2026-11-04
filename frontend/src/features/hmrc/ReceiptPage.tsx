@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { useObligations, useSubmissions } from "../../api/queries";
 import type { Submission } from "../../api/types";
 import { Button, ButtonLink } from "../../components/Button";
+import { CompatibleSoftwareLink, HmrcOnlineLink } from "../../components/HmrcLinks";
 import { CheckIcon } from "../../components/Icons";
 import { LoadFailed, Loading } from "../../components/QueryState";
 import { usePageTitle } from "../../hooks/usePageTitle";
@@ -131,13 +132,18 @@ function NextUp({ year, quarter, today }: { year: number; quarter: number; today
   const next = quarters.find((q) => q.quarter === quarter + 1);
   return (
     <p className={s.note}>
-      {next
-        ? `Next: quarter ${next.quarter} ends ${formatShort(next.windowEnd)} and is due ${formatShort(next.deadline)}. `
-        : quarter === 4
-          ? "That was the year’s last quarterly update. Next comes your final declaration. "
-          : ""}
+      {next ? (
+        `Next: quarter ${next.quarter} ends ${formatShort(next.windowEnd)} and is due ${formatShort(next.deadline)}. `
+      ) : quarter === 4 ? (
+        <>
+          That was the year’s last quarterly update. Next is your tax return. LedgerLet can’t submit
+          it, so you’ll need <CompatibleSoftwareLink /> or an accountant.{" "}
+        </>
+      ) : (
+        ""
+      )}
       If these figures change, your next update corrects them, because each one covers the tax year
-      so far.
+      so far. To see HMRC’s tax estimate, sign in to <HmrcOnlineLink />.
     </p>
   );
 }

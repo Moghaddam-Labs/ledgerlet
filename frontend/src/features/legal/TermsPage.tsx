@@ -6,11 +6,12 @@ import s from "./Legal.module.css";
 /** /terms: the terms of use, in plain English. */
 export function TermsPage() {
   return (
-    <LegalPage title="Terms of use" updated="2026-10-12">
+    <LegalPage title="Terms of use" updated="2026-11-04">
       <div className={s.summary}>
         <strong>In short</strong>
         <ul>
           <li>LedgerLet helps you keep records and send your quarterly updates to HMRC.</li>
+          <li>It doesn’t submit your tax return: you’ll need other software or an accountant.</li>
           <li>The figures you confirm and send are yours: check them before you send.</li>
           <li>LedgerLet isn’t tax advice, and isn’t made or endorsed by HMRC.</li>
         </ul>
@@ -27,6 +28,10 @@ export function TermsPage() {
         LedgerLet is software for Making Tax Digital for Income Tax. It keeps the income and
         expenses of the properties you let, works out your share, and, when you ask it to, sends
         your quarterly updates to HMRC.
+      </p>
+      <p>
+        LedgerLet doesn’t work out your tax or submit your tax return. HMRC’s online account shows
+        your tax estimate, and you’ll need other software or an accountant for your tax return.
       </p>
       <p>
         It isn’t tax, legal or accounting advice, and we aren’t your accountant. LedgerLet is

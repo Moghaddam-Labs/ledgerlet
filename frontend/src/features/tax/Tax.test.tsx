@@ -37,12 +37,23 @@ describe("Tax year", () => {
     );
   });
 
-  it("shows the year so far and when the final declaration is due", async () => {
+  it("shows the year so far, and points elsewhere for the estimate and tax return", async () => {
     renderApp("/tax");
     const ytd = await screen.findByRole("region", { name: "Year so far" });
     expect(within(ytd).getByText("6 April to today")).toBeInTheDocument();
     expect(await within(ytd).findByText("£10,183.60")).toBeInTheDocument();
     expect(screen.getByText(/final declaration, by 31 January 2028/)).toBeInTheDocument();
+    expect(screen.queryByText(/later update/)).not.toBeInTheDocument();
+    const account = screen.getByRole("link", { name: /your HMRC online account/ });
+    expect(account).toHaveAttribute(
+      "href",
+      "https://www.gov.uk/log-in-register-hmrc-online-services",
+    );
+    expect(account).toHaveAttribute("target", "_blank");
+    expect(screen.getByRole("link", { name: /software that can submit it/ })).toHaveAttribute(
+      "href",
+      expect.stringContaining("find-software-thats-compatible"),
+    );
   });
 
   it("makes each quarter one tappable row on a phone", async () => {

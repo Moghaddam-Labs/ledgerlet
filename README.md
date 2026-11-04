@@ -101,7 +101,9 @@ the HTTP error mapping, and sign-in token verification).
 | Mortgage interest excluded from expenses and profit | It is relieved as a tax credit, so it is reported separately |
 | Archived properties still count for their periods | Selling a property mid-year doesn't remove its income |
 | `ownership_percentage` is the tax share | Couples default to 50/50 unless HMRC has a Form 17 |
-| Transactions lock at year-end final declaration | Quarterly updates are cumulative, so in-year corrections must stay possible |
+| In-year product for now: quarterly updates only | HMRC allows it; landlords use HMRC's online account for the estimate, and other software or an accountant for the tax return |
+| No tax rates in the code | HMRC calculates the tax, so rate changes, such as Budget 2026's, need no code change |
+| Transactions can lock at a year-end final declaration, once LedgerLet offers one | Quarterly updates are cumulative, so in-year corrections must stay possible |
 | One cross-property transaction list, newest first, paged | A landlord reads money like a bank statement, not one property at a time |
 | List totals cover every match, at share, rounded per property per category | Same rule as the tax figures, so the list and the tax page always agree |
 | Search text that looks like an amount also matches amounts | Landlords look for "96" as often as "boiler" |
@@ -359,7 +361,7 @@ backend and fails if they've changed without being committed.
    - 5a-ii. Fraud prevention headers, validated by HMRC's test API (done)
    - 5b-i. NINO, business discovery, obligations (read-only) (done)
    - 5b-ii. Cumulative quarterly submission and audit trail (done)
-   - Later: year-end final declaration (and year-end transaction locking), encryption key rotation
+   - Later: year-end final declaration (with HMRC's other end-of-year APIs, and year-end transaction locking), encryption key rotation
    - Later: Gov-Client-Multi-Factor (with the chosen identity provider), Gov-Vendor-License-IDs
 6. React + Vite frontend
    - 6a. API for the frontend: cross-property transactions, HMRC return to the app, sample data (done)
@@ -370,7 +372,7 @@ backend and fails if they've changed without being committed.
    - 6c-iv. Review and submit to HMRC, and the HMRC connection page (done)
    - 6d. Properties, Settings, privacy notice and terms (done)
 7. Real sign-in (Auth0, UK region) and the Render demo, end to end on HMRC's sandbox (done)
-8. Before real landlords: Google sign-in keys of our own, ICO registration, HMRC production access
+8. Before real landlords: Google sign-in keys of our own, ICO registration, records export, HMRC production access (HMRC has closed new 2026-27 quarterly products)
 9. Open banking as a second transaction source
 
 ## Author

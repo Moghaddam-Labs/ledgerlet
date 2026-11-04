@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router";
 
 import { useObligations, useSubmissions, useSummary } from "../../api/queries";
+import { CompatibleSoftwareLink, HmrcOnlineLink } from "../../components/HmrcLinks";
 import { LoadFailed, Loading } from "../../components/QueryState";
 import { Statement, whoseProperties } from "../../components/Statement";
 import { WIDE, useMediaQuery } from "../../hooks/useMediaQuery";
@@ -101,13 +102,21 @@ function YearContents({ year, today }: { year: number; today: string }) {
         <YearSoFar year={year} start={yearStart} quarter={current} today={today} />
       )}
 
+      <section className={s.section} aria-labelledby="estimate-heading">
+        <h2 id="estimate-heading">Your tax estimate</h2>
+        <p className={s.prose}>
+          LedgerLet sends your figures to HMRC but doesn’t work out your tax. To see HMRC’s
+          estimate, sign in to <HmrcOnlineLink /> and choose Making Tax Digital for Income Tax.
+        </p>
+      </section>
+
       {yearEnd && (
         <section className={s.section} aria-labelledby="eoy-heading">
           <h2 id="eoy-heading">End of year</h2>
           <p className={s.prose}>
-            After quarter 4 you confirm the year’s figures and make your final declaration, by{" "}
-            {formatLong(`${year + 2}-01-31`)}. LedgerLet will guide you through this in a later
-            update.
+            After quarter 4 you need to submit your tax return, also called your final declaration,
+            by {formatLong(`${year + 2}-01-31`)}. LedgerLet can’t submit it, so you’ll need{" "}
+            <CompatibleSoftwareLink /> or an accountant.
           </p>
         </section>
       )}
