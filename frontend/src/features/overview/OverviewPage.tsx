@@ -13,6 +13,7 @@ import {
 import type { Property, TransactionItem } from "../../api/types";
 import { Amount } from "../../components/Amount";
 import { ButtonLink } from "../../components/Button";
+import { CompatibleSoftwareLink } from "../../components/HmrcLinks";
 import { LoadFailed, Loading } from "../../components/QueryState";
 import { Statement, whoseProperties } from "../../components/Statement";
 import { TaxYearRuler } from "../../components/TaxYearRuler";
@@ -136,7 +137,10 @@ function NextStepHeadline({
           <h1 id="page-heading" tabIndex={-1}>
             This year’s updates are all sent
           </h1>
-          <p>Next comes your final declaration for the year, after 5 April.</p>
+          <p>
+            Next is your tax return, after 5 April. LedgerLet can’t submit it, so you’ll need{" "}
+            <CompatibleSoftwareLink /> or an accountant.
+          </p>
         </div>
       </section>
     );
