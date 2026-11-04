@@ -1,3 +1,5 @@
+![LedgerLet: Making Tax Digital records and quarterly updates for UK landlords](docs/assets/readme-banner.png)
+
 # LedgerLet
 
 Making Tax Digital platform for UK landlords. Working name, pending a UK IPO
