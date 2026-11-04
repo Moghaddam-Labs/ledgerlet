@@ -8,6 +8,13 @@ updates:
       frontend:
         patterns: ["*"]
         update-types: [minor, patch]
+    ignore:
+      # Major frontend upgrades get their own planned PR.
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+      # Pinned to an exact version: @playwright/test and its playwright-core override must match.
+      - dependency-name: "@playwright/test"
+      - dependency-name: "playwright-core"
   - package-ecosystem: pip
     directory: /
     schedule:
